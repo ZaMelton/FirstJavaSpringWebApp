@@ -1,10 +1,14 @@
 package com.example.spring5WebApp.Models;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -17,8 +21,10 @@ public class Book {
     private String title;
     private String isbn;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Author> authors;
+    @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private Set<Author> authors = new HashSet<>();
 
     public Book() {}
 
@@ -59,5 +65,30 @@ public class Book {
         this.title = title;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Book)) {
+            return false;
+        }
+        Book book = (Book) o;
+        return Objects.equals(id, book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", isbn='" + getIsbn() + "'" +
+            ", authors='" + getAuthors() + "'" +
+            "}";
+    }
     
 }
