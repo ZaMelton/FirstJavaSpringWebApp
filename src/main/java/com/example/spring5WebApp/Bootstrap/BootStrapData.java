@@ -23,7 +23,6 @@ public class BootStrapData implements CommandLineRunner {
         this.publisherRepository = publisherRepository;
     }
 
-
     @Override
     public void run(String... args) throws Exception {
 
@@ -49,9 +48,9 @@ public class BootStrapData implements CommandLineRunner {
         Author sam = new Author("Sam", "Smith");
         Book math = new Book("Math Book", "314");
         math.setPublisher(publisher);
+        math.getAuthors().add(jack);
         publisher.getBooks().add(math);
 
-        //publisherRepository.save(publisher);
         authorRepository.save(jack);
         authorRepository.save(sam);
         bookRepository.save(math);
