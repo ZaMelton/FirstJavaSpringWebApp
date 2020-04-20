@@ -120,7 +120,6 @@ public class Publisher {
             ", city='" + getCity() + "'" +
             ", state='" + getState() + "'" +
             ", zip='" + getZip() + "'" +
-            ", books='" + getBooks() + "'" +
             "}";
     }
 }

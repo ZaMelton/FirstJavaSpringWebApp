@@ -99,7 +99,6 @@ public class Book {
             " id='" + getId() + "'" +
             ", title='" + getTitle() + "'" +
             ", isbn='" + getIsbn() + "'" +
-            ", authors='" + getAuthors() + "'" +
             "}";
     }
     

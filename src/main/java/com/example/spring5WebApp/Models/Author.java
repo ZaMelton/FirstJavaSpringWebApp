@@ -83,7 +83,6 @@ public class Author {
             " id='" + getId() + "'" +
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
-            ", books='" + getBooks() + "'" +
             "}";
     }
 
